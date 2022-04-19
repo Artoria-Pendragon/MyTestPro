@@ -8,6 +8,8 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
 
 import com.android.testpro.R;
@@ -28,6 +30,14 @@ public class MyView extends View {
     public MyView(Context context) {
         super(context);
         init(null, 0);
+    }
+
+    private VelocityTracker mVelocityTracker;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mVelocityTracker = VelocityTracker.obtain();
+        return super.onTouchEvent(event);
     }
 
     public MyView(Context context, AttributeSet attrs) {
